@@ -11,6 +11,7 @@ def read_config(mongo_config_path):
 
 def get_database(mongo_config):
     client = MongoClient(**mongo_config["client"])
+    print(client.address)
     database_name = mongo_config["database_name"]
     return client[database_name]
 

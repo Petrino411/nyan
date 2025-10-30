@@ -3,8 +3,8 @@
         {
             "issue_name": "main",
             "min_channels": 6,
-            "max_age_minutes": 120,
-            "views_percentile": 70,
+            "max_age_minutes": 360,
+            "views_percentile": 40,
             "higher_views_percentile": 85,
             "higher_trigger_age_minutes": 15
         },

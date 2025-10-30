@@ -17,7 +17,7 @@ def check_item(item):
 
 class MongoPipeline:
     def open_spider(self, spider):
-        with open("configs/mongo_config.json") as r:
+        with open("configs/mongo_container_config.json") as r:
             config = json.load(r)
         self.client = MongoClient(**config["client"])
         database_name = config["database_name"]
