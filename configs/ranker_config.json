@@ -2,7 +2,7 @@
     "issues" : [
         {
             "issue_name": "main",
-            "min_channels": 6,
+            "min_channels": 2,
             "max_age_minutes": 360,
             "views_percentile": 40,
             "higher_views_percentile": 85,
