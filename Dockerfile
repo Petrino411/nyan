@@ -13,6 +13,4 @@ RUN apt-get update && \
 COPY . .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --break-system-packages --no-cache-dir -r requirements.txt && \
-# Download models
-    bash download_models.sh
+RUN pip install --break-system-packages --no-cache-dir -r requirements.txt 

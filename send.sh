@@ -12,3 +12,4 @@ do
         --renderer-config-path configs/renderer_config.json \
         --daemon-config-path configs/daemon_config.json;
 done
+

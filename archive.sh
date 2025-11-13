@@ -26,3 +26,4 @@ echo "Packing"
 cp channels.json data/channels.json
 rm data/nyan_archive.tar.gz
 cd data && tar -czvf nyan_archive.tar.gz clusters.jsonl documents.jsonl channels.json
+
