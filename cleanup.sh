@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DAYS=7
+DAYS=3
 DB="main"
 
 # Ждём, пока Mongo не станет доступна
