@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DAYS=3
+DAYS=2
 DB="main"
 
-# Ждём, пока Mongo не станет доступна
+
 until mongo mongodb://mongo:27017/$DB --eval "db.stats()" > /dev/null 2>&1; do
     echo "[cleanup] Waiting for MongoDB..."
     sleep 5
@@ -29,5 +29,5 @@ while true; do
     "
 
     echo "[cleanup] Sleeping 24h..."
-    sleep 86400
+    sleep 43200
 done
