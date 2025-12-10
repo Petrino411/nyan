@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DAYS=2
+DAYS=1
 DB="main"
 
 
@@ -28,6 +28,6 @@ while true; do
         print('[cleanup] Done.');
     "
 
-    echo "[cleanup] Sleeping 24h..."
-    sleep 43200
+    echo "[cleanup] Sleeping 1h..."
+    sleep 3600
 done
