@@ -14,6 +14,6 @@ echo "[mongo-recreate] Removing MongoDB data..."
 rm -rf ${MONGO_DATA:?}/*
 
 echo "[mongo-recreate] Starting mongo container..."
-dockern compose up -d mongo
+docker compose up -d mongo
 
 echo "[mongo-recreate] Done."
