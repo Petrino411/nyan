@@ -28,12 +28,3 @@ services:
       - mongo
     restart: always
     command: bash crawl.sh
-
-  mongo-cleaner:
-    image: mongo:4.4.0
-    container_name: mongo-cleaner
-    depends_on:
-      - mongo
-    volumes:
-      - ./cleanup.sh:/scripts/cleanup.sh
-    entrypoint: ["bash", "/scripts/cleanup.sh"]
