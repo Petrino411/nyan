@@ -1,33 +1,19 @@
 #!/bin/bash
+set -e
 
-DAYS=1
-DB="main"
+# Переходим в директорию с compose-файлом
+cd "$(dirname "$0")"
 
 
-until mongo mongodb://mongo:27017/$DB --eval "db.stats()" > /dev/null 2>&1; do
-    echo "[cleanup] Waiting for MongoDB..."
-    sleep 5
-done
+MONGO_DATA="/mnt/data/mongocontainer"
 
-echo "[cleanup] MongoDB is up. Starting cleanup loop..."
+echo "[mongo-recreate] Stopping mongo container..."
+docker-compose stop mongo
 
-while true; do
-    CUTOFF=$(($(date +%s) - DAYS*24*60*60))
-    echo "[cleanup] Cleaning records older than $DAYS days (cutoff: $CUTOFF)..."
+echo "[mongo-recreate] Removing MongoDB data..."
+rm -rf ${MONGO_DATA:?}/*
 
-    mongo mongodb://mongo:27017/$DB --eval "
-        print('[cleanup] annotated_documents...');
-        db.annotated_documents.deleteMany({ fetch_time: { \$lt: $CUTOFF } });
+echo "[mongo-recreate] Starting mongo container..."
+docker-compose up -d mongo
 
-        print('[cleanup] clusters...');
-        db.clusters.deleteMany({ create_time: { \$lt: $CUTOFF } });
-
-        print('[cleanup] documents...');
-        db.documents.deleteMany({ fetch_time: { \$lt: $CUTOFF } });
-
-        print('[cleanup] Done.');
-    "
-
-    echo "[cleanup] Sleeping 1h..."
-    sleep 3600
-done
+echo "[mongo-recreate] Done."
